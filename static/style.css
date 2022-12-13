@@ -1,15 +1,61 @@
-body {
-    position: absolute;
-    width: 368px;
-    height: 89px;
-    left: 536px;
-    top: 236px;
-
+h1 {
+    padding-top: 200px;
+    text-align: center;
     font-family: 'Archivo';
     font-style: normal;
     font-weight: 700;
     font-size: 82px;
     line-height: 89px;
-
     color: #FFFFFF;
+}
+h2 {
+    text-align: center;
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 115px;
+    line-height: 125px;
+    color: #FFFFFF;
+}
+h3 {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 32px;
+    padding-top: 40px;
+    color: #FFFFFF;
+    padding-left: 40px;
+
+
+}
+p {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 29px;
+    line-height: 32px;
+    color: #FFFFFF;
+}
+p1 {
+    vertical-align: top;
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 29px;
+    color: #FFFFFF;
+    padding-left: 40px;
+}
+
+t1 {
+    vertical-align: top;
+    padding-right: 40px;
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 87px;
+    color: #FFFFFF;
+}
+s1 {
+    padding-left: 40px;
 }
