@@ -1,0 +1,15 @@
+body {
+    position: absolute;
+    width: 368px;
+    height: 89px;
+    left: 536px;
+    top: 236px;
+
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 82px;
+    line-height: 89px;
+
+    color: #FFFFFF;
+}
