@@ -4,9 +4,15 @@
 <title>{{page_title}}</title>
 </head>
 <body>
-{% for g in greetings %}
-    <div class ='greeting'>{{g}}</div>
-{% endfor %}
-<h2>temperature: {{temp}}</h2>
+<h2>{{time}}</h2>
+<h2>Current Temperature: {{temp}} F</h2>
+<h1>Hello {{name}}</h1>
+<h2>Let's see what your {{horoscope.sign}} sign says about you today</h2>
+<p>{{horoscope.mood}}</p>
+<p>{{horoscope.lucky_time}}</p>
+<p>{{horoscope.description}}</p>
+<p>{{horoscope.date_range[0].strftime("%m-%d")}} to {{horoscope.date_range[1].strftime("%m-%d")}}</p>
+<p>{{horoscope.color}}</p>
+<p>{{horoscope.compatibility}}</p>
 </body>
 </html>

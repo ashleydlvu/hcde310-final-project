@@ -4,15 +4,15 @@
 <title>{{page_title}}</title>
 </head>
 <body>
+<h2>{{time}}</h2>
+<h2>Current Temperature: {{temp}} F</h2>
 <form action="/" method="post">
     <label for="name">What's your name?</label>
     <input type="text" id="name" name="name" /><br /> 
-</form>
-<form action="/" method="post">
     <label for="sign">What is your astrology sign?</label>
     <input type="text" id="sign" name="sign" /><br />
+    <input type="submit" value="Go" name="gobtn"/> </form>
 </form>
-<h2>temperature: {{temp}} </h2>
 {% if prompt %}
 <div class= 'formtitle'>{{prompt}}</div>
 {% endif %}

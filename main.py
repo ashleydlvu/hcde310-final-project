@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
-import urllib.request, urllib.error, urllib.parse, json, webbrowser
+import urllib.request, urllib.error, urllib.parse, json, webbrowser, requests, pyaztro
 import logging
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -27,37 +28,20 @@ def get_temp():
         # https://api.weather.gov/gridpoints{office}/{grid X},{grid y}/forecast
         return temp
 
+#def userInput():
 
+def get_horoscope(sign):
+    horoscope = pyaztro.Aztro(sign=sign) #sign = userInput
+    # print(horoscope.mood)
+    # print(horoscope.lucky_time)
+    # print(horoscope.description)
+    # print(horoscope.date_range)
+    # print(horoscope.color)
+    # print(horoscope.compatibility)
+    return horoscope
+    #posts return info
 
-# def safe_get(url):
-#     try:
-#         return urllib.request.urlopen(url)
-#     except urllib.error.HTTPError as e:
-#         print("The server couldn't fulfill the request.")
-#         print(url)
-#         print("Error code: ", e.code)
-#     except urllib.error.URLError as e:
-#         print("We failed to reach a server")
-#         print(url)
-#         print("Reason: ", e.reason)
-#     return None
-
-# Jinja template
-# from jinja2 import Environment, FileSystemLoader
-# environment = Environment(loader=FileSystemLoader(""))
-# template = environment.get_template("hw6flickrtemplate.html")
-# content = template.render(top_views_lst=top_views_lst, top_num_tags_lst=top_num_tags_lst, top_num_comments_lst=top_num_comments_lst)
-
-# with open ("flickr-photos-sorted.html", "w", encoding="utf-8") as f:
-#     f.write(content)
-
-
-
-# horoscope, what day, data of weather, name
-# method to grab horoscope and weather
-# ask for name, their sign (display chart for users to see sign)
-
-# s
+get_horoscope("capricorn")
 
 
 def safe_get(url):
@@ -83,34 +67,53 @@ def nws_get(url):
     # then pass that request to safe_get
     return safe_get(req)
 
+def timeConvert(miliTime):
+    hours, minutes = miliTime.split(":")
+    hours, minutes = int(hours), int(minutes)
+    setting = "AM"
+    if hours > 12:
+        setting = "PM"
+        hours -= 12
+    return hours,minutes,setting
+
 
 @app.route("/", methods=["GET", "POST"])
 def main_handler():
+    now = datetime.now()
+    time = now.strftime("%H:%M")
+    hours,minutes,setting = timeConvert(time)
+    time = str(hours) + ":{:02d}".format(minutes) + " " + setting
     temp = get_temp()
-    app.logger.info("In MainHandler")
     if request.method == 'POST':
-        app.logger.info(request.form.get('name'))
-        name = request.form.get('username')
-        app.logger.info(request.form.get('sign'))
+        name = request.form.get('name')
         sign = request.form.get('sign')
         # app.logger.info(request)
-        app.logger.info("In POST")
-        if name:
+        if name and sign:
         # if form filled in, greet them using this data
-            app.logger.info("In NAME")
+            try:
+                horoscope = get_horoscope(sign)
+            except pyaztro.exceptions.PyAztroSignException as e:
+                return render_template('form.html',
+                page_title="Horoscope Form - Error",
+                prompt="Oops! We didn't recognize that sign, please check your spelling to input a valid astrology sign.",
+                temp=temp,
+                time=time)
             return render_template("response.html",
             name=name,
             page_title="Dashboard for %s"%name,
-            temp=temp
+            temp=temp,
+            time=time,
+            horoscope=horoscope
             )
         else:
         #if not, then show the form again with a correction to the user
             return render_template('form.html',
-            page_title="Greeting Form - Error",
-            prompt="How can I greet you if you don't enter a name?",
-            temp=temp)
+            page_title="Horoscope Form - Error",
+            prompt="Please enter your name and horoscope so we can show you your lucky signs for the day :)",
+            temp=temp,
+            time=time)
     else:
-        return render_template('form.html',page_title="Greeting Form", temp=temp)
+        return render_template('form.html',page_title="Greeting Form", temp=temp, time=time)
 
 if __name__ == "__main__":
     app.run(host="localhost", port=8080, debug=True)
