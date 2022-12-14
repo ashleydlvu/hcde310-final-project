@@ -2,17 +2,25 @@
 <html>
 <head>
 <title>{{page_title}}</title>
+<style> body {   background-image: url('/static/dashboard.png');  background-repeat:no-repeat; background-size:cover;} </style>
+<LINK href= "/static/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<h1>Hello {{name}}!</h1>
 <h2>{{time}}</h2>
-<h2>Current Temperature: {{temp}} F</h2>
-<h1>Hello {{name}}</h1>
-<h2>Let's see what your {{horoscope.sign}} sign says about you today</h2>
-<p>{{horoscope.mood}}</p>
-<p>{{horoscope.lucky_time}}</p>
-<p>{{horoscope.description}}</p>
-<p>{{horoscope.date_range[0].strftime("%m-%d")}} to {{horoscope.date_range[1].strftime("%m-%d")}}</p>
-<p>{{horoscope.color}}</p>
-<p>{{horoscope.compatibility}}</p>
+<p style = "text-align: center;">"{{horoscope.description}}"</p>
+<h3>
+    <div>Let's see what your {{horoscope.sign}} sign says about you today:</div>
+    <div align="right" style = "padding-right: 40px"> It's currently: </div>
+</h3>
+
+<p1>
+    Mood: {{horoscope.mood}} <t1 style = "float: right;">{{temp}}&degF</t1><br>
+    <s1>Lucky time: {{horoscope.lucky_time}}<br></s1>
+    <s1>Horoscope Date Range: {{horoscope.date_range[0].strftime("%m-%d")}} to {{horoscope.date_range[1].strftime("%m-%d")}}<br></s1>
+    <s1>Color: {{horoscope.color}}<br></s1>
+    <s1>Compatible With: {{horoscope.compatibility}}</s1>
+
+</p1>
 </body>
 </html>

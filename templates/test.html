@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename= style.css') }}">
 <title>{{page_title}}</title>
 </head>
 <body>
@@ -9,4 +10,5 @@
 {% endfor %}
 <p><a href='/'>Greet someone else?</a></p>
 </body>
+<img src="dashboard.png" alt="dashboard">
 </html>
