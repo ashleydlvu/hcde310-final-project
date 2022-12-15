@@ -1,0 +1,49 @@
+#welcome-form {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    font-family: "Archivo";
+    font-style: normal;
+    font-weight: 700;
+    position: absolute;
+    top: 31%;
+    left: 31%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 90%;
+    width: 500px;
+    padding: 30px;
+    border-radius: 5%;
+    margin-bottom: 20px;
+    height: 250px;
+    text-align: center;
+}
+
+button {
+    font-family: "Archivo";
+    font-style: normal;
+    font-weight: 700;
+    width: 100px;
+    margin-top: 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+#welcome-form > h2 {
+    font-family: "Archivo";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+div {
+    margin: 16px;
+}

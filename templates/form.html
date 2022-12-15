@@ -2,19 +2,24 @@
 <html>
 <head>
 <title>{{page_title}}</title>
+<style> body {   background-image: url('/static/purple_gradient.jpeg');  background-repeat:no-repeat; background-size:cover;} </style>
+<LINK href= "/static/style_form.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h2>{{time}}</h2>
-<h2>Current Temperature: {{temp}} F</h2>
-<form action="/" method="post">
-    <label for="name">What's your name?</label>
-    <input type="text" id="name" name="name" /><br /> 
-    <label for="sign">What is your astrology sign?</label>
-    <input type="text" id="sign" name="sign" /><br />
-    <input type="submit" value="Go" name="gobtn"/> </form>
-</form>
-{% if prompt %}
-<div class= 'formtitle'>{{prompt}}</div>
-{% endif %}
+<article id="welcome-form">
+    <h2>WELCOME</h2>
+    <form id="user-info" action="/" method="post">
+        <label for="name">What's your name?</label>
+        <input type="text" id="name" name="name" /><br /> 
+        <label for="sign">What is your astrology sign?</label>
+        <input type="text" id="sign" name="sign" /><br />
+        <button>Next</button>
+    </form>
+    {% if prompt %}
+    <div class= 'formtitle'>{{prompt}}</div>
+    {% endif %}
+</article>
+
+
 </body>
 </html>
